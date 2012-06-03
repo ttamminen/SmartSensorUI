@@ -15,7 +15,7 @@ $(function () {
   function animateHumidity (t) {
 
     data = [];
-    offset = 2 * Math.PI * (t - start) / 10000;
+    offset = -1 * 9 * Math.PI * (t - start) / 10000;
 
     // Sample the sine function
     for (i = 0; i < 4 * Math.PI; i += 0.2) {
@@ -40,7 +40,7 @@ $(function () {
   function animateTemperature (t) {
 
     data = [];
-    offset = 2 * Math.PI * (t - start) / 10000;
+    offset = -1 * 2 * Math.PI * (t - start) / 10000;
 
     // Sample the sine function
     for (i = 0; i < 4 * Math.PI; i += 0.2) {
