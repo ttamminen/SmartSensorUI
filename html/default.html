@@ -1,0 +1,117 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+	<title>Smart sensor</title>
+	<link href="css/Default.css" rel="stylesheet" type="text/css" />
+	    <script type="text/javascript" src="http://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      google.load('visualization', '1', {packages: ['corechart']});
+    </script>
+    <script type="text/javascript">
+      function drawVisualization() {
+        // Create and populate the data table.
+		var temperatureData = google.visualization.arrayToDataTable([
+		['Time', 'Temperature (°C)'],
+		['10',   1],
+		['11',   2],
+		['12',   4],
+		['13',   8],
+		['14',   7],
+		['15',   7],
+		['16',   8],
+		['17',   4],
+		['18',   2],
+		['19',   3.5],
+		['20',   3],
+		['21',   3.5],
+		['22',   1]
+		]);
+		
+		var humidityData = google.visualization.arrayToDataTable([
+		['Time', 'Humidity (%)'],
+		['10',   40],
+		['11',   41],
+		['12',   42],
+		['13',   40],
+		['14',   40],
+		['15',   35],
+		['16',   30],
+		['17',   32],
+		['18',   38],
+		['19',   40],
+		['20',   35],
+		['21',   30],
+		['22',   32]
+		]);
+      
+        new google.visualization.LineChart(document.getElementById('temperatureVisualization')).
+            draw(temperatureData, {curveType: "function",
+                        width: 960, height: 200, backgroundColor: '#ececec', chartArea: {left:30,top:10},
+                        vAxis: {maxValue: 10}}
+                );
+				
+        new google.visualization.LineChart(document.getElementById('humidityVisualization')).
+            draw(humidityData, {curveType: "function",
+                        width: 960, height: 200, backgroundColor: '#ececec', chartArea: {left:30,top:10},
+                        vAxis: {maxValue: 10}}
+                );				
+      }
+      
+
+      google.setOnLoadCallback(drawVisualization);
+    </script>
+</head>
+
+<body>
+	<div id="wrap">
+		<div id="main">
+			<div id="title">
+				<div id ="companyInfo">
+					<a href="http://www.softability.fi"><img border="0" src="Images/softability.png"></img></a>
+				</div>
+				<div id="logo">
+					<img src="Images/title.png"></img>
+				</div>
+			</div>
+			<div id="mainContent">
+				<p>
+					<span class="deviceInfoHeader">Device <b>MBed45678</b></span><br />
+					<a style="padding-top: -10px;">show details</a>
+				</p>
+				<h1>LED</h1>
+				<p>Adjust the intensity of the light</p>
+				<img border="0" src="Images/slider.png"></img> <span style="margin-bottom: 15px;">10%</span>
+				<br/>
+				<br/>
+				<br/>
+				<br/>
+				<h1>Temperature</h1>
+				<p>Show 
+				<select class="dropDownSize1">
+					<option selected value="1">latest hour</option>
+					<option value="2">latest 3 hours</option>
+					<option selected value="3">latest 12 hours</option>
+					<option value="4">latest day</option>
+					<option value="5">all data</option>
+				</select>
+				</p>
+				<div id="temperatureVisualization" style="width: 960px; height: 200;"></div>
+				<h1>Humidity</h1>
+				<p>Show 
+				<select class="dropDownSize1">
+					<option value="1">latest hour</option>
+					<option value="2">latest 3 hours</option>
+					<option selected value="3">latest 12 hours</option>
+					<option value="4">latest day</option>
+					<option value="5">all data</option>
+				</select>
+				</p>				
+				<div id="humidityVisualization" style="width: 960px; height: 200px;"></div>
+			</div>
+		</div>
+	</div>
+	<div class="footer">
+		<p class="footerText">@ 2012 Softability Group Oy</p>
+	</div>
+</body>
